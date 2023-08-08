@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labeler>
+    <xslt>
+        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+            <xsl:template match="//file_input">
+                <framework_usage>
+                    <xsl:copy-of select="@Order" />
+                    <framework_name>matoki</framework_name>
+                    <name>matoki</name>
+                    <import>matoki.x</import>
+                    <annotation>
+                        <xsl:value-of select="./stmt/compound_stmt/decorator/dotted_name/dotted_name/name/NAME/@Value" />
+                    </annotation>
+                    <start_line>
+                        <xsl:value-of select="./stmt/compound_stmt/decorator/dotted_name/dotted_name/name/NAME/@StartLine" />
+                    </start_line>
+                    <start_column>
+                       <xsl:value-of select="./stmt/compound_stmt/decorator/dotted_name/dotted_name/name/NAME/@StartColumn" />
+                    </start_column>
+                    <start_line_class>
+                        <xsl:value-of select="./stmt/compound_stmt/classdef/StartLine/@Value" />
+                    </start_line_class>
+                    <AnnotationParameters>
+                    </AnnotationParameters>
+                    <framework_type>
+                        <!-- Note: CodeFrameworkType enum value! look at code to see legal values. -->
+                        Authorization
+                    </framework_type>
+
+                </framework_usage>
+            </xsl:template>
+        </xsl:stylesheet>
+    </xslt>
+
+    <id>matoki_framework</id>
+
+    <conditions>
+        <import>matoki.x</import>
+    </conditions>
+</labeler>
